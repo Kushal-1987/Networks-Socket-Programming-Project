@@ -26,7 +26,7 @@ int main(){
         cout<<"Receiver Binding Failed\n";
     }
 
-    char buf[64];
+    char buf[64] = {0};
     int x=sizeof(sockaddr);
     recvfrom(socketfd,(void *)&buf,64,0,(sockaddr*)&sender_addr,(socklen_t*)&x);
     int i=0;
