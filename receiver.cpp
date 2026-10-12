@@ -35,4 +35,6 @@ int main(){
     }
     cout<<'\n';
 
+    close(socketfd);
+
 }

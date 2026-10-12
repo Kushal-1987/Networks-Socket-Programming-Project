@@ -30,5 +30,5 @@ int main(){
     const char* msg="Hello World\0";
     sendto(socketfd,(void*)msg,strlen(msg),0,(sockaddr*)&receiver_addr,sizeof(sockaddr));
 
-
+    close(socketfd);
 }
