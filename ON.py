@@ -1,4 +1,5 @@
 import sys
+import socket
 
 def read_config(file):
     #file = sys.argv[1]
@@ -25,5 +26,20 @@ def read_config(file):
 
     return adj_mat
 
-adj = read_config(sys.argv[1])
 
+def main():
+    
+    adj_mat = read_config(sys.argv[1])
+    socketfd = socket.socket(socket.PF_INET, socket.SOCK_STREAM)
+
+    if socketfd.bind(("",5000))==-1:
+        print("ON binding failed")
+
+    socketfd.listen()
+
+    l = []
+    for _ in range(len(adj_mat)):
+        l.append(socketfd.accept())
+
+if __name__ == "__main__":
+    main()
